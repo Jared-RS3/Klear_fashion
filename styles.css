@@ -640,15 +640,29 @@ body{
   .page-inner{padding:7mm 0 0;flex:none}
   .page-foot{margin-top:8mm}
   .cover-glow,.dark-glow,.split-glow{display:none!important}
-  /* the decorative phone mock is tall; dropping it keeps the cover to one sheet */
-  .cover-stage{display:none!important}
+
+  /* Cover fills the whole sheet (short content otherwise sits in the top half),
+     with the grid vertically centred. Flex is safe here — the cover is always
+     a single page. */
+  .proposal-page.cover{display:flex;flex-direction:column;min-height:262mm}
+  .cover .cover-grid{flex:1 1 auto;align-items:center}
+  /* keep the phone on the right; drop the decorative stone backdrop + shadow */
+  .editorial-rock,.phone-shadow{display:none!important}
+  .cover-stage{min-height:0;height:auto}
+  .device-cover{height:auto!important;width:min(210px,100%)!important;transform:none!important;filter:none!important;margin:0 auto}
+
+  /* Vision: keep the girl image on the right, small. */
+  .vision-side{padding-top:0!important}
+  .arched-image{max-width:150px!important}
 
   /* Deterministic print layout — do not depend on the 820px screen breakpoint
      coincidentally matching the ~794px print width. Single column reads cleanly
      on A4 for most blocks; the Limitations lists stay two-up so they fit one
-     page, and the signatures stay three-up like a contract. */
-  .cover-grid,.vision-grid,.resp-grid,.ti-price-row,
-  .why-grid{grid-template-columns:1fr!important}
+     page, and the signatures stay three-up like a contract. The cover and
+     Vision keep two columns so their images sit to the right of the text. */
+  .resp-grid,.ti-price-row,.why-grid{grid-template-columns:1fr!important}
+  .cover-grid{grid-template-columns:1.1fr .9fr!important;align-items:center}
+  .vision-grid{grid-template-columns:1.4fr .6fr!important}
   .two-scope{grid-template-columns:1fr 1fr!important;gap:22px}
   .split-scope{grid-template-columns:1.15fr .85fr!important;gap:30px}
   .sign-grid,.sign-grid.three{grid-template-columns:1fr 1fr 1fr!important;gap:18px}
