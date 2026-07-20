@@ -10,7 +10,7 @@
 const proposalData = {
   clientName: "Nolubabalo Nqakala",
   projectName: "AI Fashion Platform",
-  proposalDate: "15 July 2026",
+  proposalDate: "20 July 2026",
   proposalValidityDays: 14,
   hourlyRate: 700,
   currency: "ZAR",
@@ -92,13 +92,19 @@ const ipSuccess = {
 
 /* Core app — Phases 01–03 (Discovery, AI Proof of Concept, Consumer MVP). */
 const coreKeys = ["p1", "p2", "p3"];
-const coreOnceOffTotal = coreKeys.reduce((sum, k) => sum + phases[k].onceOff, 0);
+const coreOnceOffTotal = coreKeys.reduce(
+  (sum, k) => sum + phases[k].onceOff,
+  0,
+);
 
 /* Full platform — Phases 01–04, adding Community. The Retailer Platform
    (Phase 05) is scoped and priced separately later, so it is not part of
    this total. */
 const fullKeys = ["p1", "p2", "p3", "p4"];
-const fullOnceOffTotal = fullKeys.reduce((sum, k) => sum + phases[k].onceOff, 0);
+const fullOnceOffTotal = fullKeys.reduce(
+  (sum, k) => sum + phases[k].onceOff,
+  0,
+);
 
 /* ---------------------------------------------------------------
    OPERATING-COST MODEL — fully transparent so the figures can be
@@ -142,10 +148,7 @@ usageTiers.forEach((t) => {
 /* The build sits on the same bar scale as the live tiers — that is the point:
    it shows the client how close to nothing the platform costs to run until
    real people are using it. */
-const barStages = [
-  { key: "build", thirdParty: buildMonthly },
-  ...usageTiers,
-];
+const barStages = [{ key: "build", thirdParty: buildMonthly }, ...usageTiers];
 const tierMaxThirdParty = Math.max(...barStages.map((t) => t.thirdParty));
 
 /* ---- 3. Values bound to [data-fill] elements ---- */
