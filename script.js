@@ -35,21 +35,19 @@ const validUntil = validUntilDate.toLocaleDateString("en-ZA", {
   year: "numeric",
 });
 
-/* One fixed once-off price per phase. Each phase is scoped, approved and
-   billed on its own — the price is agreed in writing before that phase
-   starts and does not move without the client's written approval.
+/* One once-off price per phase, scoped and billed on its own. The hours
+   and price are PLANNING ESTIMATES: they are reviewed and confirmed with
+   the client in a scoping meeting before the phase begins, and may be
+   revised then.
 
-   hoursEst is the effort estimate behind each price, shown for planning
-   only. Because the price is fixed, hours are indicative and carry no
-   billing consequence either way: overrunning them costs the client
-   nothing, and coming in under them refunds nothing.
+   hoursEst is the effort estimate behind each price. If a phase runs beyond
+   its confirmed estimate because scope, complexity or requirements change,
+   the additional hours are assessed and agreed with the client in writing
+   before the work continues, and charged at the build rate — Daybreak does
+   not absorb overruns arising from expanded scope.
 
    Every phase price is exactly hoursEst × buildRate, so any figure in this
-   proposal can be derived in front of the client from two numbers. The
-   build rate sits above the R700 support rate on purpose: a fixed price
-   means Daybreak absorbs any overrun, and the client pays for that
-   certainty. Support is billed only for hours actually worked, so it
-   carries no such risk and no such premium. */
+   proposal can be derived in front of the client from two numbers. */
 const buildRate = 1100;
 /* Phase 05 (Retailer Platform) is deliberately left unpriced — its scope
    is difficult to estimate accurately today, so it is worked out and quoted

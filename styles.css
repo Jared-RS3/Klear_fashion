@@ -624,15 +624,58 @@ body{
   body{padding-top:0}
   .topbar,.sidenav,.progress{display:none!important}
   .pages{padding:0;display:block}
+
+  /* One section per sheet, SIZED TO ITS CONTENT. We deliberately do not force a
+     full 297mm height — that stretched every page to a whole sheet and pushed
+     slightly-taller sections onto a near-blank second page. Page margins live on
+     @page, so every physical sheet (including where a long section spills onto a
+     second one) keeps the same top/bottom margin. */
   .proposal-page{
-    width:210mm;min-height:297mm;height:auto;margin:0;padding:16mm 15mm;
-    box-shadow:none;border-radius:0;page-break-after:always;break-after:page;overflow:visible;
+    display:block;width:auto;min-height:0;height:auto;margin:0;padding:8mm 12mm;
+    box-shadow:none;border-radius:0;overflow:visible;
+    break-after:page;page-break-after:always;
     -webkit-print-color-adjust:exact;print-color-adjust:exact
   }
-  .proposal-page:last-child{page-break-after:auto}
-  .page-split{min-height:297mm}
+  .proposal-page:last-child{break-after:auto;page-break-after:auto}
+  .page-inner{padding:7mm 0 0;flex:none}
+  .page-foot{margin-top:8mm}
+  .cover-glow,.dark-glow,.split-glow{display:none!important}
+  /* the decorative phone mock is tall; dropping it keeps the cover to one sheet */
+  .cover-stage{display:none!important}
+
+  /* Deterministic print layout — do not depend on the 820px screen breakpoint
+     coincidentally matching the ~794px print width. Single column reads cleanly
+     on A4 for most blocks; the Limitations lists stay two-up so they fit one
+     page, and the signatures stay three-up like a contract. */
+  .cover-grid,.vision-grid,.resp-grid,.ti-price-row,
+  .why-grid{grid-template-columns:1fr!important}
+  .two-scope{grid-template-columns:1fr 1fr!important;gap:22px}
+  .split-scope{grid-template-columns:1.15fr .85fr!important;gap:30px}
+  .sign-grid,.sign-grid.three{grid-template-columns:1fr 1fr 1fr!important;gap:18px}
+
+  /* closing page: stack the two panels rather than forcing a full-height row */
+  .page-split{display:block;min-height:0}
+  .split-dark,.split-light{padding:22px 4px}
+
+  /* Keep self-contained blocks from being cut across a page boundary. These are
+     the units that must never split — a phase, a term, a cost row, a signature
+     column, a callout, the signatures row, a two-column list column, etc. They
+     are small/medium enough that keeping them whole won't orphan a heading. */
+  .term,.phase,.cost-row,.sign-block,.sr-figure,.callout,.why-point,
+  .price-card,.tier-band,.resp-grid>div,.vtimeline li,.steps li,.ph-meta,
+  .cover-inner,.support-rate,.prepared,.sign-grid,.two-scope>div,
+  .split-scope>div,.ti-price-row,.ti-stack,.ti-key,.numlist li,
+  .cols li,.ticklist li{break-inside:avoid;page-break-inside:avoid}
+
+  /* Never leave a heading (or its eyebrow) stranded at the foot of a page. */
+  .eyebrow,h1,h2,h3,h4,h5,.title,.cover-title,.contact-title,.pc-title,
+  .tb-name,.contact-title{break-after:avoid;page-break-after:avoid}
+
+  /* No single dangling first/last line of a paragraph or list item. */
+  p,li{orphans:3;widows:3}
+
+  img{max-width:100%!important;height:auto!important;break-inside:avoid}
+
   .page-inner>*,.cover-inner>*,.split-dark>*,.split-light>*{opacity:1!important;transform:none!important}
-  .cover-stage{min-height:480px}
-  .term,.phase,.cost-row,.sign-block,.sr-figure{break-inside:avoid}
 }
-@page{size:A4;margin:0}
+@page{size:A4;margin:10mm}
