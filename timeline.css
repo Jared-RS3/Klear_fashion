@@ -1,0 +1,177 @@
+/* ============================================================
+   DAYBREAK — AI Fashion Platform · Delivery Timeline
+   Extends styles.css (same tokens, same paper/ink/warm system).
+   Only the timeline-specific components live here.
+   ============================================================ */
+
+/* ---------- cover stat band ---------- */
+.tl-cover-foot{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.tl-stat{
+  flex:1 1 150px;border:1px solid rgba(0,0,0,.16);background:rgba(255,255,255,.4);
+  padding:18px 20px;display:flex;flex-direction:column;gap:6px
+}
+.tl-stat b{font-size:clamp(24px,3vw,32px);font-weight:300;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.tl-stat span{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.tl-stat.warm{border-color:var(--warm);background:rgba(201,147,96,.1)}
+.tl-stat.warm b{color:var(--warm-deep)}
+
+/* ---------- the two-developer model ---------- */
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.role-card{border-top:2px solid var(--warm);padding-top:14px}
+.role-card .r-tag{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--warm-deep);font-weight:600}
+.page-dark .role-card .r-tag{color:var(--warm)}
+.role-card h4{font-size:15px;font-weight:600;letter-spacing:.01em;margin:6px 0 8px}
+.role-card ul{list-style:none;margin:0;padding:0}
+.role-card li{font-size:12px;line-height:1.5;padding:4px 0 4px 15px;position:relative;color:inherit}
+.role-card li:before{content:"–";position:absolute;left:0;color:var(--warm)}
+.page-dark .role-card li{color:rgba(248,243,236,.8)}
+
+/* ---------- estimation method points ---------- */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:16px}
+.method-point{border-top:1px solid rgba(255,255,255,.16);padding-top:14px}
+.page-light .method-point{border-top-color:rgba(0,0,0,.16)}
+.method-point b{display:block;font-size:12.5px;font-weight:600;margin-bottom:7px;letter-spacing:-.01em}
+.method-point p{font-size:11.5px;line-height:1.55;color:rgba(248,243,236,.66);margin:0}
+.page-light .method-point p{color:var(--muted)}
+
+/* the velocity math strip */
+.velo{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;border:1px solid var(--warm);background:rgba(201,147,96,.08)}
+.velo div{padding:16px 16px;border-right:1px solid rgba(201,147,96,.35)}
+.velo div:last-child{border-right:0}
+.velo b{display:block;font-size:20px;font-weight:300;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--warm)}
+.page-light .velo b{color:var(--warm-deep)}
+.velo span{display:block;font-size:10px;line-height:1.5;color:var(--muted);margin-top:5px}
+.velo em{font-style:normal;color:inherit;opacity:.9}
+
+/* ============================================================
+   PHASE DETAIL PAGES
+   ============================================================ */
+.pd-head{
+  display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:end;
+  margin-top:8px;padding-bottom:18px;border-bottom:1px solid rgba(0,0,0,.16)
+}
+.pd-title h3{font-size:clamp(17px,2.1vw,23px);font-weight:500;letter-spacing:.01em;margin:8px 0 0}
+.pd-metrics{display:flex;gap:26px;flex-wrap:wrap}
+.pd-metric{display:flex;flex-direction:column;gap:3px;text-align:right}
+.pd-metric span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pd-metric b{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pd-metric.warm b{color:var(--warm-deep)}
+
+/* per-developer effort split bar */
+.split-bar{display:flex;height:12px;border-radius:3px;overflow:hidden;margin-top:20px}
+.split-bar i{display:block;height:100%}
+.split-bar .sa{background:linear-gradient(180deg,var(--warm),var(--warm-deep))}
+.split-bar .sb{background:rgba(0,0,0,.32)}
+.split-bar .ss{background:repeating-linear-gradient(45deg,var(--muted),var(--muted) 4px,transparent 4px,transparent 8px)}
+.split-legend{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:9px}
+.split-legend span{display:flex;align-items:center;gap:7px;font-size:10.5px;color:var(--muted)}
+.split-legend i{width:11px;height:11px;border-radius:2px;flex:none}
+.split-legend .la{background:linear-gradient(180deg,var(--warm),var(--warm-deep))}
+.split-legend .lb{background:rgba(0,0,0,.32)}
+.split-legend .ls{background:repeating-linear-gradient(45deg,var(--muted),var(--muted) 3px,transparent 3px,transparent 6px)}
+.split-legend b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* task table */
+.task-group{margin-top:24px}
+.task-group-label{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--warm-deep);font-weight:600;
+  padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,.14)}
+.task-group-label em{font-style:normal;color:var(--muted);font-weight:400;letter-spacing:.08em}
+.task-row{display:grid;grid-template-columns:30px 1fr auto;gap:14px;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:12.5px}
+.task-row .t-who{
+  font-size:8.5px;font-weight:700;letter-spacing:.04em;color:var(--warm-deep);
+  border:1px solid rgba(169,116,63,.5);border-radius:3px;padding:2px 0;text-align:center;
+  font-variant-numeric:tabular-nums
+}
+.task-row .t-who.b{color:#3a352f;border-color:rgba(0,0,0,.28)}
+.task-row .t-who.ab{color:var(--muted);border-color:rgba(0,0,0,.2)}
+.task-row .t-name{line-height:1.45}
+.task-row .t-name small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;line-height:1.4}
+.task-row .t-hrs{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;color:var(--ink)}
+.task-row .t-hrs em{font-style:normal;font-weight:400;color:var(--muted);font-size:10px}
+
+/* "why it takes this long" note */
+.why-time{display:flex;gap:16px;align-items:flex-start;margin-top:26px;padding:18px 22px;
+  border:1px solid var(--warm);background:rgba(201,147,96,.09)}
+.why-time .co-mark{font-size:16px;color:var(--warm-deep);line-height:1.4;flex:0 0 auto}
+.why-time p{margin:0;font-size:12px;line-height:1.62;color:#33302b}
+.why-time b{font-weight:600;color:var(--ink)}
+
+/* ============================================================
+   MASTER SCHEDULE — GANTT
+   ============================================================ */
+.gantt{margin-top:24px}
+.gantt-axis{position:relative;height:20px;margin-left:118px;border-bottom:1px solid rgba(255,255,255,.2)}
+.gantt-axis span{position:absolute;top:0;transform:translateX(-50%);font-size:9px;letter-spacing:.08em;
+  color:var(--muted);font-variant-numeric:tabular-nums}
+.gantt-axis span:before{content:"";position:absolute;left:50%;top:16px;width:1px;height:5px;background:rgba(255,255,255,.2)}
+
+.gantt-row{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:0;
+  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.gantt-label{display:flex;flex-direction:column;gap:2px;padding-right:14px}
+.gantt-label b{font-size:11px;font-weight:600;letter-spacing:.04em}
+.gantt-label span{font-size:9px;letter-spacing:.06em;color:var(--muted)}
+.gantt-track{position:relative;height:32px}
+/* faint month gridlines behind every bar */
+.gantt-grid{position:absolute;inset:0;pointer-events:none}
+.gantt-grid i{position:absolute;top:-6px;bottom:-6px;width:1px;background:rgba(255,255,255,.07)}
+
+.gantt-bar{position:absolute;top:0;height:100%;border-radius:4px;overflow:hidden;
+  background:rgba(201,147,96,.14);border:1px solid rgba(201,147,96,.5);
+  display:flex;flex-direction:column;justify-content:center;gap:3px;padding:0 4px}
+.gantt-bar.ext{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.05)}
+/* the two developer lanes inside a phase bar — this is the "simultaneous" story */
+.gantt-lane{height:5px;border-radius:999px}
+.gantt-lane.a{background:linear-gradient(90deg,var(--warm-deep),var(--warm))}
+.gantt-lane.b{background:rgba(248,243,236,.55)}
+.gantt-bar small{position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  font-size:8.5px;letter-spacing:.08em;color:var(--warm);font-variant-numeric:tabular-nums;font-weight:600}
+.gantt-bar.ext small{color:rgba(248,243,236,.75)}
+
+/* milestone markers */
+.gantt-marks{position:relative;margin-left:118px;height:52px;margin-top:6px}
+.gantt-mark{position:absolute;top:0;bottom:0;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px}
+.gantt-mark i{width:1px;flex:1;background:var(--warm)}
+.gantt-mark.full i{background:rgba(248,243,236,.5)}
+.gantt-mark b{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);
+  writing-mode:horizontal-tb;white-space:nowrap;font-weight:600}
+.gantt-mark.full b{color:var(--white)}
+.gantt-mark span{font-size:8.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.gantt-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.gantt-key span{display:flex;align-items:center;gap:8px;font-size:10.5px;color:var(--muted)}
+.gantt-key i{width:16px;height:5px;border-radius:999px;flex:none}
+.gantt-key i.a{background:linear-gradient(90deg,var(--warm-deep),var(--warm))}
+.gantt-key i.b{background:rgba(248,243,236,.55)}
+.gantt-key i.ext{height:12px;width:12px;border-radius:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.28)}
+
+/* ============================================================
+   FACTORS PAGE
+   ============================================================ */
+.factor{display:grid;grid-template-columns:26px 1fr auto;gap:16px;align-items:baseline;
+  padding:15px 0;border-bottom:1px solid rgba(0,0,0,.12)}
+.factor .f-num{font-size:13px;color:var(--warm-deep);font-variant-numeric:tabular-nums}
+.factor .f-body strong{display:block;font-size:13px;font-weight:600;margin-bottom:4px}
+.factor .f-body p{margin:0;font-size:11.5px;line-height:1.55;color:var(--muted);max-width:60ch}
+.factor .f-effect{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-deep);
+  white-space:nowrap;text-align:right;font-weight:600}
+
+@media(max-width:820px){
+  .roles-grid,.method-grid,.velo{grid-template-columns:1fr}
+  .velo div{border-right:0;border-bottom:1px solid rgba(201,147,96,.35)}
+  .velo div:last-child{border-bottom:0}
+  .pd-head{grid-template-columns:1fr}
+  .pd-metric{text-align:left}
+  .gantt-axis,.gantt-marks{margin-left:0}
+  .gantt-row{grid-template-columns:1fr;gap:8px}
+  .gantt-label{flex-direction:row;gap:8px;align-items:baseline}
+  .factor{grid-template-columns:20px 1fr}
+  .factor .f-effect{grid-column:2;text-align:left;margin-top:4px}
+}
+
+@media print{
+  .tl-stat,.velo,.why-time{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .task-group,.factor,.gantt-row{break-inside:avoid}
+}
