@@ -1,42 +1,42 @@
 /* ============================================================
    DAYBREAK — KLIYA
-   Prototype & Technical Validation Brief V6 — revised proposal data.
+   Revised Commercial Proposal — MVP Integration & Technical
+   Support (DB-KLIYA-MVP-REV2-110926).
 
-   Build pricing is once-off per phase. Every phase price in this
-   proposal is derived here from two numbers only: the combined
-   engineering hours for that phase and Daybreak's build rate of
-   R1,100/hour. Nothing is hand-typed, so no figure on the page can
-   drift away from the arithmetic behind it.
+   This proposal replaces the earlier Phase 01/02 Prototype &
+   Technical Validation deck. Scope is now a single fixed-fee
+   integration programme: connect approved third-party providers
+   into the existing Kliya MVP, not build the product from
+   scratch.
 
-   The rate has NOT changed. The scope has.
+   Every hour and fee below is derived from one source — the
+   workstream table — so the narrative pages and the commercial
+   pages cannot disagree. The one number that is NOT derived is
+   the fixed project fee itself: R230,000 is the commercially
+   rounded price for the 209-hour estimate (R229,900 at
+   R1,100/hour). The payment-schedule amounts ARE derived, as
+   percentages of that fixed fee.
    ============================================================ */
 
 /* ---- 1. Editable proposal data ---- */
 const proposalData = {
-  clientName: "Nolubabalo Nqakala",
+  clientName: "Kliya",
   projectName: "Kliya",
-  proposalDate: "27 August 2026",
-  proposalValidityDays: 14,
-  /* Post-launch support rate only — this is NOT the build rate.
-     The build rate lives in buildRate below. */
-  hourlyRate: 700,
-  currency: "ZAR",
-  vatStatus: "Exclusive of VAT where applicable",
+  docRef: "DB-KLIYA-MVP-REV2-110926",
+  issueDate: "11 September 2026",
+  proposalValidityDays: 4,
   companyName: "Daybreak",
   email: "contact@daybreaktechinnovations.com",
   website: "daybreaktech.agency",
   location: "Cape Town, South Africa",
-  startDate: "27 August 2026",
-  deliveryDate: "9 October 2026",
+  deliveryWindow: "8–10 weeks of active delivery",
 };
 
 /* ---- 2. Derived display values ---- */
-const rateHour = `R${proposalData.hourlyRate} per hour`;
 const fmt = (value) => "R" + Math.round(value).toLocaleString("en-US");
 const hrs = (h) => `${h} hours`;
 
-// Validity date computed from the issue date + validity days.
-const issued = new Date(proposalData.proposalDate);
+const issued = new Date(proposalData.issueDate);
 const validUntilDate = new Date(issued);
 validUntilDate.setDate(issued.getDate() + proposalData.proposalValidityDays);
 const validUntil = validUntilDate.toLocaleDateString("en-ZA", {
@@ -46,262 +46,134 @@ const validUntil = validUntilDate.toLocaleDateString("en-ZA", {
 });
 
 /* ---------------------------------------------------------------
-   BUILD RATE — unchanged from the original proposal.
-
-   All hours quoted below are COMBINED DAYBREAK ENGINEERING HOURS
-   across a two-person team, not per-developer hours.
+   BUILD RATE — Daybreak's standard engineering rate. Unchanged
+   from the original proposal.
    --------------------------------------------------------------- */
 const buildRate = 1100;
 
 /* ---------------------------------------------------------------
-   PHASE LINE ITEMS
+   WORKSTREAM LINE ITEMS
 
-   [name, combined hours, what the line covers]
+   [name, hours, included outcome]
 
-   Each phase price is the sum of its line items × buildRate, so the
-   breakdown pages and the commercial summary are computed from the
-   same source and cannot disagree.
+   The commercial project fee is fixed at R230,000 — a
+   commercially rounded figure for this 209-hour estimate. Hours
+   are planning estimates mapped to the approved workstreams; the
+   engagement is priced for delivery of the agreed scope and
+   outcomes, not for consuming an arbitrary block of hours.
    --------------------------------------------------------------- */
-const phaseLines = {
-  p1: [
-    [
-      "Product Scope &amp; Technical Requirements Mapping",
-      6,
-      "Founder-brief decomposition · prototype requirements · technical requirements · functional requirements · scope boundaries · acceptance requirements · definition of Functional, API-powered, Rules-based, Simulated and Technical-POC capabilities",
-    ],
-    [
-      "Consumer / Creator / Retailer Journey Architecture",
-      6,
-      "Consumer experience · creator experience · retailer experience · complete user-flow mapping · the relationship between the three Kliya ecosystem participants",
-    ],
-    [
-      "Application &amp; System Architecture",
-      8,
-      "Frontend architecture · backend architecture · database structure · storage architecture · authentication architecture · integration layer · modular provider architecture · replaceable simulation architecture · development-environment planning · deployment architecture",
-    ],
-    [
-      "Body-Scanning Technical Validation",
-      10,
-      "Evaluation of appropriate body-measurement providers · 3DLOOK and Size Stream evaluation · alternative providers where required · capture requirements · structured measurement outputs · body-shape outputs · privacy implications · image-retention requirements · Kliya Body Intelligence compatibility · body-data-to-simulation feasibility",
-    ],
-    [
-      "Virtual Try-On Provider Validation",
-      5,
-      "API feasibility · image requirements · garment requirements · generation quality · latency · reliability · output ownership · commercial suitability · limitations. Virtual Try-On is positioned as visualisation, not as scientifically proven physical-fit prediction.",
-    ],
-    [
-      "3D / Physics Simulation Technology Validation",
-      12,
-      "Technical evaluation of CLO 3D, Style3D and Browzwear — API access · server / headless operation · cloud execution · body-geometry support · garment formats · material properties · simulation outputs · tension data · strain data · collision information · fit-state information · latency · compute requirements · development feasibility · output ownership · lock-in risk · future replacement by proprietary Kliya technology",
-    ],
-    [
-      "Garment Intelligence Architecture",
-      5,
-      "The structure used to represent garment composition · material · stretch · silhouette · cut · intended fit · structure · weight · thickness · garment measurements · retailer size-chart information · source · confidence",
-    ],
-    [
-      "Fit-IQ V1 Technical Architecture",
-      5,
-      "The Kliya-owned V1 logic connecting Body Intelligence, Garment Intelligence and retailer sizing to High, Moderate or Low fit confidence, with supporting reasons and stated uncertainty. No unsupported percentage-level physical-fit accuracy is claimed.",
-    ],
-    [
-      "Four-Garment Acceptance-Test Definition",
-      3,
-      "The controlled validation methodology across rigid structured cotton denim · high-stretch elastane / jersey · structured heavy wool / tailoring · fluid silk / satin-style material",
-    ],
+const workstreamLines = [
+  [
+    "Integration architecture &amp; backend foundation",
+    22,
+    "Shared integration layer, service boundaries, auth/secrets pattern, request orchestration, baseline observability, data-mapping conventions and environment configuration.",
   ],
-  p2: [
-    [
-      "Application Foundation, Repository, Database &amp; Deployment",
-      15,
-      "Kliya-owned repository setup · frontend foundation · backend foundation · database · application environments · deployment · secrets and environment handling · code organisation · core integration architecture",
-    ],
-    [
-      "Authentication, Onboarding &amp; Privacy Consent",
-      15,
-      "Account creation · authentication · login · onboarding flow · profile creation · privacy consent · body-data consent · appropriate user-state handling",
-    ],
-    [
-      "Body Intelligence Profile + Scanning Integration",
-      25,
-      "Selected measurement-provider integration · image and capture workflow · structured measurement handling · measurement normalisation · Body Intelligence Profile · persistence · error handling · connection to Fit-IQ · simulation-ready data bridge where technically feasible",
-    ],
-    [
-      "Product URL / Image Import",
-      20,
-      "Retailer URL input · screenshot and image upload · public product-data extraction · manual fallback · image fallback · product metadata handling · blocked-extraction handling · confidence tracking",
-    ],
-    [
-      "Garment Intelligence System",
-      20,
-      "Capturing or inferring composition · material · stretch · cut · silhouette · intended fit · structure · thickness · weight · sizing · measurements · size-chart information · source metadata · confidence metadata",
-    ],
-    [
-      "Virtual Try-On Pipeline",
-      25,
-      "Person input · garment input · provider integration · generation requests · job and status handling · loading states · results · error handling · retry handling · generation history · generated-asset handling",
-    ],
-    [
-      "Fit-IQ V1 Rules Engine",
-      40,
-      "Body-data, garment-data and retailer-size inputs · fit-rule implementation · intended-ease logic · material and stretch consideration · incomplete-data handling · confidence determination · High / Moderate / Low guidance · human-readable reasoning · stated uncertainty · modular architecture · documentation. This is new proprietary Kliya product logic that did not form part of the original AI Proof of Concept.",
-      "feature",
-    ],
-    [
-      "Size Comparison Functionality",
-      10,
-      "Comparing at least two garment sizes · Fit-IQ comparison · confidence changes · fit-reason changes · presentation to users",
-    ],
-    [
-      "3D / Physics Simulation POC",
-      40,
-      "Selected simulation integration · controlled body geometry · garment geometry · material-property handling · simulation workflow · simulation results · integration into the Kliya prototype · technical experimentation · limitations handling. This is a Technical POC — not development of Kliya's own proprietary cloth-physics engine.",
-      "feature",
-    ],
-    [
-      "TrueDrape / Fit-State Mapping",
-      15,
-      "Representation of restrictive, snug, optimal and loose fit states using real available simulation or fit-state outputs. Pressure and tension information is never fabricated: where the selected provider does not expose exact tension, strain or pressure data, the closest technically defensible representation is used and the limitation is stated.",
-    ],
-    [
-      "Four-Garment Technical Validation",
-      15,
-      "The controlled Phase 2 acceptance test against rigid denim, high-stretch jersey / elastane, structured wool / tailoring and fluid silk / satin — demonstrating, where available, source information · verified attributes · inferred attributes · visualisation · simulation output · Fit-IQ output · supported fit-state output · known limitations",
-    ],
-    [
-      "Closet &amp; Saved Looks",
-      10,
-      "Owned garments · prospective purchases · saved garments · outfits · Saved Looks · closet management",
-    ],
-    [
-      "Wardrobe Compatibility",
-      5,
-      "Prototype-level recommendation logic showing how a prospective purchase relates to items already owned",
-    ],
-    [
-      "Creator Experience + Try This Look",
-      10,
-      "Prototype-level creator profiles · creator search · boards · collections · tagged garments · the Try This Look journey. Not expanded into a production-scale social network.",
-    ],
-    [
-      "Retailer Prototype Experience",
-      10,
-      "Prototype-level retailer dashboard · retailer value proposition · mocked conversion data · mocked return data · mocked demand information. Not production retailer infrastructure.",
-    ],
-    [
-      "Request Brand to Integrate",
-      5,
-      "Integration CTA · requested brand · product URL · garment / category · tester or user reference · timestamp · demand recording",
-    ],
-    [
-      "Minimal Administration Controls",
-      5,
-      "Basic internal controls for users · garments · generations · content · integration requests",
-    ],
-    [
-      "QA, Debugging &amp; End-to-End Testing",
-      15,
-      "Complete consumer flow · body capture · product import · Garment Intelligence · Virtual Try-On · Fit-IQ · simulation · fit mapping · size comparison · saving · creator flow · retailer flow · authentication · API failures · invalid inputs · missing data · responsiveness · deployment validation",
-    ],
-    [
-      "Technical Documentation &amp; Handover",
-      10,
-      "Application architecture · database schemas · API wrappers · integration structure · Fit-IQ documentation · simulation integration · deployment process · environment setup · known limitations · future development considerations · future CTO / engineering-team handover",
-    ],
+  [
+    "Body Intelligence / body measurement",
+    28,
+    "Integrate one approved measurement provider; map supported body outputs into Kliya's body profile; persist required data; handle incomplete/failure states; document export/retention limitations.",
   ],
-};
+  [
+    "Virtual Try-On",
+    28,
+    "Integrate one approved VTO provider into the existing journey; support required user/body and garment inputs; return/display results; isolate provider logic; capture latency/failure/usage information where available.",
+  ],
+  [
+    "Garment / simulation / fit infrastructure",
+    32,
+    "Integrate one approved technically accessible provider; map required body/garment inputs; retrieve machine-readable fit signals where exposed; document asset-preparation, preprocessing and vendor dependencies.",
+  ],
+  [
+    "PointAI validation &amp; lightweight path",
+    10,
+    "Validate commercial/technical access, required inputs and available outputs; implement a lightweight MVP path where access supports it, otherwise provide a documented blocker and exact next action.",
+  ],
+  [
+    "Product ingestion / Garment Intelligence",
+    27,
+    "Support approved product inputs including URL/image/size chart/measurements/fabric/manual data; normalise into a common garment structure; retain data provenance; maintain fallback when retailer extraction is unreliable.",
+  ],
+  [
+    "Affiliate commerce / creator attribution",
+    25,
+    "Implement one approved MVP affiliate network (Impact or CJ); support approved account model, link generation and available attribution/commission mapping; structure the interface so another network can be added later.",
+  ],
+  [
+    "QA, security hardening, documentation &amp; handover",
+    37,
+    "Cross-workstream testing, failure-path validation, basic usage/cost visibility, sensitive-data handling checks, technical documentation, known-limitations register, handover and final acceptance support.",
+  ],
+];
 
-/* Phase 02's itemised scope carries 310 hours of work. Ten of those hours
-   are shared architecture already paid for elsewhere in the phase — the
-   foundation, integration layer and provider abstraction are built once and
-   reused across Body Intelligence, Garment Intelligence, VTO and simulation.
-   That consolidation is shown as a visible line on the breakdown rather than
-   quietly trimmed from a capability, so every line item below reads at its
-   true effort and the phase still lands on the quoted 300 hours. */
-const phases = {
-  p1: {
-    tag: "PHASE 01",
-    name: "Discovery &amp; Technical Validation",
-    adjustHours: 0,
-    adjustLabel: "",
-  },
-  p2: {
-    tag: "PHASE 02",
-    name: "End-to-End Prototype &amp; Physics POC",
-    adjustHours: -10,
-    adjustLabel: "Shared-architecture consolidation",
-  },
-};
+const totalHours = workstreamLines.reduce((sum, l) => sum + l[1], 0);
+const estimatedLabourBasis = totalHours * buildRate;
 
-Object.entries(phases).forEach(([key, p]) => {
-  p.lines = phaseLines[key];
-  p.itemisedHours = p.lines.reduce((sum, line) => sum + line[1], 0);
-  p.itemisedFee = p.itemisedHours * buildRate;
-  p.hoursEst = p.itemisedHours + p.adjustHours;
-  p.onceOff = p.hoursEst * buildRate;
-  p.adjustFee = p.adjustHours * buildRate;
-  /* Milestone billing: 50% deposit before the phase begins, then two 25%
-     milestones. The phases stand alone — no 50% of the whole project is
-     ever payable upfront. */
-  p.deposit = p.onceOff * 0.5;
-  p.milestone = p.onceOff * 0.25;
+/* The commercial project fee — fixed, not derived from hours ×
+   rate. This is the one number in the deck that is intentionally
+   hand-set: it is the commercially rounded price Daybreak is
+   charging, R100 above the raw estimate. */
+const fixedFee = 230000;
+
+/* ---------------------------------------------------------------
+   PAYMENT SCHEDULE — three milestones, all derived as percentages
+   of the fixed fee so the schedule can never drift from the total.
+   --------------------------------------------------------------- */
+const paymentMilestones = [
+  {
+    name: "Commencement deposit",
+    trigger: "Agreement signed; before engineering starts",
+    pct: 0.5,
+  },
+  {
+    name: "Integration midpoint",
+    trigger: "Core integration foundation + first accepted workstreams",
+    pct: 0.3,
+  },
+  {
+    name: "Final acceptance &amp; handover",
+    trigger: "Before final source/documentation handover",
+    pct: 0.2,
+  },
+];
+paymentMilestones.forEach((m) => {
+  m.amount = fixedFee * m.pct;
 });
-
-/* ---- Quoted project total — Phases 01 + 02 only ----
-   Phase 03 (Consumer MVP / Beta) is deliberately NOT quoted here. It is
-   scoped and priced separately once Phase 02 is delivered and its technical
-   findings reviewed, so it carries no hours and no fee and appears in no
-   total. */
-const quotedKeys = ["p1", "p2"];
-const quotedHours = quotedKeys.reduce((sum, k) => sum + phases[k].hoursEst, 0);
-const quotedTotal = quotedKeys.reduce((sum, k) => sum + phases[k].onceOff, 0);
-
-/* ---- Original vs revised scope ----
-   The original Phase 01 + Phase 02 quotation, retained here purely for the
-   like-for-like comparison on the "Why the investment has changed" page.
-   These are the ONLY places the superseded figures may appear. */
-const original = { hours: 135, total: 126500 };
-const addedHours = quotedHours - original.hours;
-const addedValue = addedHours * buildRate;
+const depositAmount = paymentMilestones[0].amount;
+const depositPct = paymentMilestones[0].pct * 100;
 
 /* ---- 3. Values bound to [data-fill] elements ---- */
 const fills = {
   "client-name": proposalData.clientName,
-  "rate-hour": rateHour,
+  "doc-ref": proposalData.docRef,
+  "issue-date": proposalData.issueDate,
   "validity-days": String(proposalData.proposalValidityDays),
   "valid-until": validUntil,
   "build-rate": `R${buildRate.toLocaleString("en-US")} per hour`,
   "build-rate-short": `R${buildRate.toLocaleString("en-US")}/hour`,
-  "start-date": proposalData.startDate,
-  "delivery-date": proposalData.deliveryDate,
-  "quoted-hours": String(quotedHours),
-  "quoted-hours-long": `${quotedHours} combined engineering hours`,
-  "quoted-total": fmt(quotedTotal),
-  "orig-hours": String(original.hours),
-  "orig-total": fmt(original.total),
-  "added-hours": String(addedHours),
-  "added-value": fmt(addedValue),
-  "added-calc": `${addedHours} × ${fmt(buildRate)}`,
+  "delivery-window": proposalData.deliveryWindow,
+  "total-hours": String(totalHours),
+  "total-hours-long": `${totalHours} engineering hours`,
+  "labour-basis": fmt(estimatedLabourBasis),
+  "fixed-fee": fmt(fixedFee),
+  "deposit-pct": `${depositPct}%`,
+  "deposit-amount": fmt(depositAmount),
+  "midpoint-pct": `${paymentMilestones[1].pct * 100}%`,
+  "midpoint-amount": fmt(paymentMilestones[1].amount),
+  "final-pct": `${paymentMilestones[2].pct * 100}%`,
+  "final-amount": fmt(paymentMilestones[2].amount),
 };
-
-Object.entries(phases).forEach(([key, p]) => {
-  fills[`${key}-onceoff`] = fmt(p.onceOff);
-  fills[`${key}-hours`] = hrs(p.hoursEst);
-  fills[`${key}-deposit`] = fmt(p.deposit);
-  fills[`${key}-milestone`] = fmt(p.milestone);
-});
 
 document.querySelectorAll("[data-fill]").forEach((el) => {
   const key = el.dataset.fill;
   if (fills[key] != null) el.textContent = fills[key];
 });
 
-/* ---- Phase breakdown rows ----
-   Rendered from phaseLines so the visible line items, the sub-total, the
-   consolidation line and the phase total are all the same arithmetic. */
+/* ---- Workstream breakdown rows ----
+   Rendered from workstreamLines so the visible line items, the
+   sub-total and the estimated labour basis are all the same
+   arithmetic. */
 document.querySelectorAll("[data-lines]").forEach((host) => {
-  const p = phases[host.dataset.lines];
-  if (!p) return;
+  if (host.dataset.lines !== "workstreams") return;
 
   const row = (name, hours, fee, note, cls) =>
     `<div class="cost-row${cls ? " " + cls : ""}">` +
@@ -312,53 +184,26 @@ document.querySelectorAll("[data-lines]").forEach((host) => {
     `<span class="cv-h">${hours}</span><b>${fee}</b>` +
     `</div></div>`;
 
-  const items = p.lines
-    .map(([name, hours, note, cls], i) =>
+  const items = workstreamLines
+    .map(([name, hours, note], i) =>
       row(
         `<i class="cost-num">${String(i + 1).padStart(2, "0")}</i>${name}`,
         hrs(hours),
         fmt(hours * buildRate),
         note,
-        cls,
       ),
     )
     .join("");
 
-  const adjustment = p.adjustHours
-    ? row(
-        "Sub-total — itemised scope",
-        hrs(p.itemisedHours),
-        fmt(p.itemisedFee),
-        "",
-        "sub",
-      ) +
-      row(
-        p.adjustLabel,
-        `\u2212${Math.abs(p.adjustHours)} hours`,
-        `−${fmt(Math.abs(p.adjustFee))}`,
-        "Foundation, integration layer and provider abstraction are built once and reused across the modules above, so the phase is quoted below the sum of its parts.",
-        "sub",
-      )
-    : "";
-
   host.innerHTML =
     items +
-    adjustment +
-    row(`${p.tag} TOTAL`, hrs(p.hoursEst), fmt(p.onceOff), "", "total");
-});
-
-// Development build-up bar — each phase segment is sized by its share of the
-// quoted project fee, and the bracket spans the total it labels, so the
-// illustration can never disagree with the figures beside it.
-document.querySelectorAll("[data-stack-phase]").forEach((el) => {
-  const phase = phases[el.dataset.stackPhase];
-  if (phase) el.style.width = `${(phase.onceOff / quotedTotal) * 100}%`;
-});
-
-const stackSpans = { quoted: quotedTotal };
-document.querySelectorAll("[data-stack-span]").forEach((el) => {
-  const total = stackSpans[el.dataset.stackSpan];
-  if (total) el.style.width = `${(total / quotedTotal) * 100}%`;
+    row(
+      "ESTIMATED LABOUR BASIS",
+      hrs(totalHours),
+      fmt(estimatedLabourBasis),
+      "",
+      "total",
+    );
 });
 
 /* ---- 4. Page + navigation setup ---- */

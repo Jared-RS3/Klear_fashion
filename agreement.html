@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daybreak — Kliya MVP Integration Services Agreement</title>
+    <meta
+      name="description"
+      content="Professional Services Agreement between Daybreak Tech-Innovations (Pty) Ltd and Kliya for MVP Integration &amp; Technical Support — DB-KLIYA-MVP-AGR-110926."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Agreement-specific layout: a single continuous legal document rather
+         than the paginated proposal deck. Reuses the same design tokens,
+         type scale and component classes as index.html. */
+      body.agreement {
+        padding-top: 64px;
+      }
+      .agr-topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        z-index: 110;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(16px, 3vw, 30px);
+        background: linear-gradient(
+          to bottom,
+          rgba(7, 8, 9, 0.96),
+          rgba(7, 8, 9, 0.82)
+        );
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--white);
+      }
+      .agr-topbar a.tb-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+      }
+      .agr-back {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 10.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-right: auto;
+        margin-left: 24px;
+      }
+      .agr-back:hover {
+        color: var(--white);
+      }
+      .agr-doc {
+        max-width: var(--page-w);
+        margin: 0 auto;
+        padding: clamp(30px, 6vw, 74px);
+        background: linear-gradient(
+          120deg,
+          #fbf9f6 4%,
+          #f1ebe4 58%,
+          #e4d6ca 100%
+        );
+        color: var(--ink);
+      }
+      .agr-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+        padding-bottom: 30px;
+        margin-bottom: 34px;
+      }
+      .agr-title h1 {
+        font-weight: 400;
+        font-size: clamp(24px, 3.4vw, 38px);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        margin: 10px 0 0;
+      }
+      .agr-parties {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 18px 32px;
+        margin-top: 30px;
+      }
+      .agr-parties div span {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .agr-parties div b {
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .clause {
+        margin: 0 0 30px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .clause h3 {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--warm-deep);
+        margin: 0 0 10px;
+      }
+      .clause p {
+        font-size: 13.5px;
+        line-height: 1.68;
+        margin: 0 0 10px;
+        max-width: 72ch;
+      }
+      .clause ul {
+        margin: 0 0 10px;
+        padding-left: 20px;
+      }
+      .clause li {
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin-bottom: 6px;
+        max-width: 68ch;
+      }
+      .agr-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 34px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: rgba(201, 147, 96, 0.18);
+        border: 1px solid var(--warm);
+        color: var(--white);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .agr-download:hover {
+        background: rgba(201, 147, 96, 0.32);
+      }
+      .agr-sign-note {
+        margin: 40px 0 0;
+      }
+      @media print {
+        .agr-topbar {
+          display: none !important;
+        }
+        body.agreement {
+          padding-top: 0;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .agr-doc {
+          padding: 16mm 16mm;
+          max-width: none;
+          min-height: 297mm;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .clause {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      @media (max-width: 640px) {
+        .agr-parties {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="agreement">
+    <header class="agr-topbar">
+      <a class="tb-brand" href="index.html">
+        <svg class="brand-sun" viewBox="0 0 32 26" fill="none" aria-hidden="true">
+          <path d="M8 22 A8 8 0 0 1 24 22" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="4" y1="22" x2="28" y2="22" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="16" y1="2" x2="16" y2="8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="5.5" y1="6" x2="9" y2="10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="26.5" y1="6" x2="23" y2="10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+        <span>DAYBREAK</span>
+      </a>
+      <a class="agr-back" href="index.html">← BACK TO PROPOSAL</a>
+      <button class="agr-download" id="agrPrint">
+        <span>DOWNLOAD / PRINT PDF</span>
+      </button>
+    </header>
+
+    <main class="agr-doc">
+      <div class="agr-head">
+        <div class="agr-title">
+          <p class="eyebrow gold">PROFESSIONAL SERVICES AGREEMENT</p>
+          <h1>Kliya MVP Integration<br />Services Agreement</h1>
+        </div>
+        <div style="text-align: right">
+          <p class="eyebrow">AGREEMENT REFERENCE</p>
+          <p style="font-size: 13px; font-weight: 500; margin: 6px 0 0">
+            DB-KLIYA-MVP-AGR-110926
+          </p>
+        </div>
+      </div>
+
+      <div class="agr-parties">
+        <div>
+          <span>EFFECTIVE DATE</span
+          ><b>11 September 2026, or date of last signature</b>
+        </div>
+        <div>
+          <span>CONTRACT VALUE</span><b>R230,000 (VAT only if applicable)</b>
+        </div>
+        <div>
+          <span>DAYBREAK</span
+          ><b>Daybreak Tech-Innovations (Pty) Ltd, Cape Town, South Africa</b>
+        </div>
+        <div>
+          <span>CLIENT</span
+          ><b>Kliya / the legal entity identified in the signature block</b>
+        </div>
+        <div style="grid-column: 1 / -1">
+          <span>PROJECT</span><b>Kliya MVP Integration &amp; Technical Support</b>
+        </div>
+      </div>
+
+      <div class="clause">
+        <h3>1. Parties and Contract Documents</h3>
+        <p>
+          This Professional Services Agreement (“Agreement”) is between
+          Daybreak Tech-Innovations (Pty) Ltd (“Daybreak”) and Kliya / the
+          legal entity identified in the signature block (“Client”). The
+          Client's identity for this Agreement is the registered legal
+          entity name and registration number recorded in Clause 21 — an
+          unincorporated or unnamed signatory does not bind Daybreak to
+          perform. The Agreement incorporates: (a) the Daybreak Revised
+          Proposal DB-KLIYA-MVP-REV2-110926; and (b) the founder-issued
+          Kliya MVP Integration &amp; Technical Support Brief used for the
+          revised quotation. If documents conflict, this Agreement governs
+          commercial/legal terms and the approved proposal governs priced
+          scope.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>2. Services and Scope Control</h3>
+        <p>
+          Daybreak will perform the approved integration, backend hardening,
+          testing, documentation and handover services described in the
+          proposal. The engagement does not include rebuilding the Kliya
+          MVP, redesigning product journeys/UI, building proprietary
+          body-scanning/garment-reconstruction/cloth-physics technology,
+          production-scale infrastructure, or other excluded work.
+        </p>
+        <p>
+          <b>Provider assumption.</b> Unless expressly stated otherwise in a
+          signed change order, the fixed fee covers one selected/approved
+          provider per primary integration category and one approved
+          affiliate network for MVP implementation. Where a vendor does not
+          provide suitable access, licensing, documentation or technically
+          usable interfaces, Daybreak's obligation is to identify and
+          document the blocker and recommended next action; Daybreak is not
+          required to create an unscoped proprietary substitute.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>3. Project Management and ClickUp Record</h3>
+        <p>
+          ClickUp will be the primary client-facing operational record for
+          delivery. Daybreak will use it to record workstreams, tasks,
+          status, milestone evidence, blockers, dependencies, review notes
+          and acceptance comments. Where used, time logs support delivery
+          transparency and project management; they do not convert the
+          fixed-fee engagement into hourly/time-and-materials billing or
+          require Daybreak to exhaust exactly 209 hours.
+        </p>
+        <p>
+          A ClickUp task marked complete is delivery evidence, but
+          completion remains subject to the agreed scope and acceptance
+          process. Client feedback, blockers and requests should be recorded
+          in ClickUp or confirmed in writing by an authorised
+          decision-maker. ClickUp records may evidence project performance
+          and delay attribution, but they do not change fees, scope or legal
+          terms unless a written change order is approved by both parties.
+        </p>
+        <p>
+          Where the Client delays required access, feedback, credentials,
+          approvals or test data, the affected due dates move by at least
+          the duration of the delay and Daybreak is not in breach for the
+          resulting schedule impact.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>4. Acceptance</h3>
+        <p>
+          Daybreak will submit completed workstreams or milestones for
+          review. The Client will have five (5) business days to either
+          accept the submission or provide written, specific
+          non-conformance feedback identifying the agreed requirement that
+          has not been met. If no such feedback is received within that
+          period, the submitted milestone is deemed accepted for project
+          progression and billing purposes.
+        </p>
+        <p>
+          Defects means reproducible failures of Daybreak's bespoke work to
+          perform materially in accordance with the agreed scope. Vendor
+          outages, vendor-side defects, undocumented vendor limitations,
+          changes to third-party APIs, new requirements and preference
+          changes are not defects.
+        </p>
+        <p>
+          <b>Revision cycles.</b> Daybreak will address up to two rounds of
+          specific, written non-conformance feedback per milestone at no
+          additional fee. A third or subsequent round of feedback on the
+          same milestone, or feedback that introduces a requirement outside
+          the originally agreed scope, is treated as a change request under
+          Clause 6 and billed at the standard rate unless otherwise agreed
+          in writing.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>5. Fees, Invoicing and Payment</h3>
+        <ul>
+          <li>
+            Fixed project fee: R230,000, plus VAT only if legally applicable
+            at invoice date. This is based on an estimated 209 engineering
+            hours at Daybreak's standard R1,100/hour rate (R229,900
+            estimated labour basis), commercially rounded to R230,000.
+          </li>
+          <li>50% commencement deposit: R115,000, due before work starts.</li>
+          <li>30% integration-midpoint milestone: R69,000.</li>
+          <li>
+            20% final acceptance/handover milestone: R46,000, due before
+            final handover.
+          </li>
+          <li>
+            Approved out-of-scope work: R1,100/hour unless a separate fixed
+            price is agreed in writing.
+          </li>
+          <li>
+            Third-party vendor, API, SDK, cloud, hosting, licence, usage and
+            commercial onboarding charges are Client costs unless expressly
+            included.
+          </li>
+        </ul>
+        <p>
+          Daybreak may suspend work for overdue invoices after written
+          notice. Suspension caused by non-payment extends delivery dates
+          and does not constitute Daybreak delay. Final bespoke source
+          code, handover materials and ownership transfer are conditional
+          on full payment of all undisputed amounts due.
+        </p>
+        <p>
+          <b>Late payment.</b> Any invoiced amount not paid within seven (7)
+          calendar days of its due date accrues interest at 2% per month
+          (or the maximum rate permitted by law, if lower), calculated
+          daily, without prejudice to Daybreak's right to suspend work under
+          this Clause.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>6. Change Control</h3>
+        <p>
+          Any requirement outside the approved scope must be documented in a
+          written change request that states the change, price and schedule
+          impact. Neither informal messages, calls, meetings nor ClickUp
+          comments create an obligation to perform additional work unless
+          Daybreak expressly approves the change in writing.
+        </p>
+        <p>
+          The Client may approve or defer individual workstreams. If a
+          workstream is deferred before Daybreak begins material work on
+          it, the parties will document the resulting contract-value and
+          schedule adjustment in writing.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>7. Client Responsibilities and Dependencies</h3>
+        <ul>
+          <li>
+            Provide timely access to Kliya-controlled repositories,
+            environments, database structures and relevant technical
+            documentation.
+          </li>
+          <li>
+            Provide or procure required vendor accounts, API keys, SDK
+            access, licences, sandbox access and commercial approvals.
+          </li>
+          <li>
+            Nominate one authorised decision-maker for consolidated feedback
+            and approvals.
+          </li>
+          <li>
+            Ensure Client-provided content, data and instructions may
+            lawfully be used for the project.
+          </li>
+          <li>
+            Promptly notify Daybreak of security, privacy, regulatory or
+            vendor restrictions relevant to body imagery, measurements or
+            other sensitive information.
+          </li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <h3>8. Third-Party Services</h3>
+        <p>
+          Third-party services are outside Daybreak's control. Daybreak does
+          not warrant that a vendor will approve Kliya, continue operating
+          an API, maintain pricing, maintain undocumented functionality,
+          achieve a particular latency/accuracy level, or expose data that
+          the vendor does not make available. Daybreak will implement
+          accessible approved integrations with reasonable professional
+          care and document material limitations discovered during the
+          engagement.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>9. Performance Standard; No Business Outcome Guarantee</h3>
+        <p>
+          Daybreak's performance is measured against the agreed technical
+          deliverables, acceptance criteria, documented ClickUp
+          tasks/milestones and reasonable professional engineering
+          standards. The 209-hour figure is a good-faith planning estimate
+          for the revised scope, not a promise that every estimated hour
+          must be consumed. Daybreak does not guarantee commercial results,
+          user adoption, affiliate revenue, conversion rate, vendor
+          acceptance, third-party accuracy or other business outcomes not
+          expressly stated as technical acceptance criteria.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>10. Intellectual Property</h3>
+        <p>
+          Upon full payment, the Client receives ownership of bespoke
+          project code and project-specific documentation created
+          specifically for Kliya under this Agreement. Daybreak retains all
+          rights in pre-existing intellectual property, general know-how,
+          reusable libraries, development methods, templates, generic
+          integration patterns and non-client-specific components. To the
+          extent such retained materials are embedded in a deliverable,
+          Daybreak grants the Client a perpetual, non-exclusive licence to
+          use them as part of the Kliya deliverable.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>11. Confidentiality and Data</h3>
+        <p>
+          Each party must protect the other party's confidential
+          information and use it only for the project. Daybreak will apply
+          reasonable safeguards to credentials, body imagery, measurements
+          and other sensitive project data within the scope of the
+          integration work. The Client remains responsible for establishing
+          the lawful basis, notices, consents, retention rules and
+          product-level privacy requirements for Kliya's end-user data.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>12. Defect Correction and Ongoing Support</h3>
+        <p>
+          For thirty (30) calendar days after final acceptance, Daybreak
+          will correct reproducible defects in its bespoke delivered
+          integration code that fall within the agreed scope, at no
+          additional professional-services fee. Enhancements, new vendor
+          requirements, third-party changes, new devices/environments, new
+          features and post-acceptance optimisation are excluded and may be
+          quoted separately.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>13. Suspension and Termination</h3>
+        <p>
+          <b>No unilateral termination for convenience.</b> Once work has
+          commenced, neither party may terminate the project merely for
+          convenience unless both parties agree in writing to the
+          termination and its financial consequences.
+        </p>
+        <p>
+          Either party may terminate for material breach if the breaching
+          party fails to cure that breach within ten (10) business days
+          after receiving written notice describing the breach. Daybreak
+          may suspend or terminate immediately for persistent non-payment,
+          unlawful instructions, misuse of Daybreak systems, or conduct that
+          creates a material security/legal risk.
+        </p>
+        <p>
+          If the Client abandons, pauses indefinitely or attempts to cancel
+          the project without an agreed termination, the Client remains
+          responsible for fees earned for completed work, work already
+          materially committed or scheduled, and non-cancellable
+          third-party obligations incurred with Client approval. The
+          commencement deposit is non-refundable once work has started,
+          except to the extent required by applicable law or agreed
+          otherwise in writing.
+        </p>
+        <p>
+          <b>Deemed abandonment.</b> The Client is deemed to have abandoned
+          the project if it fails to provide requested access, feedback,
+          credentials, approvals or payment for thirty (30) consecutive
+          calendar days after a written reminder from Daybreak. On deemed
+          abandonment, Daybreak may invoice immediately for all work
+          completed and materially committed to date, and this Agreement
+          terminates on payment of that invoice without further notice
+          required.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>14. Liability</h3>
+        <p>
+          To the maximum extent permitted by law, neither party is liable
+          to the other for indirect, incidental, special or consequential
+          loss, including lost profits, lost revenue, lost opportunity or
+          reputational loss arising from the project. Daybreak's aggregate
+          liability arising from this Agreement will not exceed the
+          professional fees actually paid to Daybreak under this Agreement,
+          except where liability cannot lawfully be limited.
+        </p>
+        <p>
+          Daybreak is not liable for loss caused primarily by third-party
+          vendor outages, vendor data errors, vendor security incidents
+          outside Daybreak-controlled systems, Client modifications,
+          unauthorised access caused by Client credential handling, or
+          Client failure to follow documented requirements.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>15. Non-Solicitation of Delivery Resources</h3>
+        <p>
+          During the project and for twelve (12) months after completion,
+          the Client will not knowingly solicit for direct employment or
+          direct contracting any Daybreak employee or contractor materially
+          involved in the project without Daybreak's prior written consent.
+          This does not restrict general public recruitment not
+          specifically targeted at Daybreak personnel.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>16. Force Majeure</h3>
+        <p>
+          Neither party is liable for delay caused by events beyond its
+          reasonable control, including widespread infrastructure outages,
+          major vendor/platform failures, natural disasters, civil
+          disruption or government action. The affected party must notify
+          the other reasonably promptly and resume performance when
+          reasonably possible. This Clause excuses the timing of
+          performance only — it does not excuse payment for services
+          already rendered or for provider costs already committed with
+          Client approval.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>17. Governing Law and Disputes</h3>
+        <p>
+          This Agreement is governed by the laws of the Republic of South
+          Africa. The parties will first attempt in good faith to resolve
+          any dispute through senior-level discussion. If unresolved,
+          either party may pursue the remedies available to it in a court
+          of competent jurisdiction in the Western Cape, subject to any
+          mandatory law that applies otherwise.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>18. Notices</h3>
+        <p>
+          A notice under this Agreement — including a notice of breach,
+          suspension, termination or deemed abandonment — is validly given
+          if sent by email to the address recorded for the recipient in
+          Clause 21, or posted to the shared ClickUp workspace with an
+          accompanying email flagging it as a formal notice. A notice takes
+          effect on the next business day after it is sent, unless the
+          recipient acknowledges receipt sooner.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>19. Assignment</h3>
+        <p>
+          Neither party may assign or transfer this Agreement, or any
+          right to receive payment under it, without the other party's
+          prior written consent, except that Daybreak may assign this
+          Agreement without consent to a successor entity in a merger,
+          acquisition or corporate reorganisation, provided that successor
+          assumes Daybreak's obligations under this Agreement.
+        </p>
+      </div>
+
+      <div class="clause">
+        <h3>20. Entire Agreement; Written Amendments</h3>
+        <p>
+          This Agreement and the incorporated project documents record the
+          parties' agreement for the priced scope. Any amendment, waiver,
+          scope change, early termination or settlement must be recorded in
+          writing and approved by authorised representatives of both
+          parties. Electronic signatures and written electronic approvals
+          are acceptable.
+        </p>
+      </div>
+
+      <div class="clause agr-sign-note">
+        <h3>21. Signatures</h3>
+        <p>
+          By signing below, each signatory confirms they are authorised to
+          bind the party they represent. For the Client, the registered
+          legal entity name and registration number identify the party
+          bound by this Agreement under Clause 1.
+        </p>
+      </div>
+
+      <div class="sign-grid three">
+        <div class="sign-block">
+          <h5>KLIYA / CLIENT</h5>
+          <div class="sig-line">
+            <span>Registered legal entity name</span
+            ><input type="text" placeholder="Legal entity name" />
+          </div>
+          <div class="sig-line">
+            <span>Company registration number</span
+            ><input type="text" placeholder="Registration number" />
+          </div>
+          <div class="sig-line">
+            <span>Name of signatory</span
+            ><input type="text" placeholder="Full name" />
+          </div>
+          <div class="sig-line">
+            <span>Capacity / title</span
+            ><input type="text" placeholder="e.g. Founder" />
+          </div>
+          <div class="sig-line">
+            <span>Email (for notices)</span
+            ><input type="text" placeholder="name@company.com" />
+          </div>
+          <div class="sig-line">
+            <span>Signature — draw below</span>
+            <div class="sig-pad-wrap">
+              <canvas class="sig-pad"></canvas>
+              <span class="sig-pad-hint">Draw with mouse or touch</span>
+            </div>
+            <button type="button" class="sig-clear">Clear</button>
+          </div>
+          <div class="sig-line"><span>Date</span><input type="date" /></div>
+        </div>
+        <div class="sign-block">
+          <h5><svg class="brand-sun tiny" viewBox="0 0 32 26" fill="none" aria-hidden="true"><path d="M8 22 A8 8 0 0 1 24 22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="4" y1="22" x2="28" y2="22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="16" y1="2" x2="16" y2="8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="5.5" y1="6" x2="9" y2="10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="26.5" y1="6" x2="23" y2="10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>DAYBREAK · CO-FOUNDER</h5>
+          <div class="sig-line">
+            <span>Name of signatory</span
+            ><input type="text" placeholder="Full name" />
+          </div>
+          <div class="sig-line">
+            <span>Email (for notices)</span
+            ><input type="text" placeholder="name@daybreaktechinnovations.com" />
+          </div>
+          <div class="sig-line">
+            <span>Signature — draw below</span>
+            <div class="sig-pad-wrap">
+              <canvas class="sig-pad"></canvas>
+              <span class="sig-pad-hint">Draw with mouse or touch</span>
+            </div>
+            <button type="button" class="sig-clear">Clear</button>
+          </div>
+          <div class="sig-line"><span>Date</span><input type="date" /></div>
+        </div>
+        <div class="sign-block">
+          <h5><svg class="brand-sun tiny" viewBox="0 0 32 26" fill="none" aria-hidden="true"><path d="M8 22 A8 8 0 0 1 24 22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="4" y1="22" x2="28" y2="22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="16" y1="2" x2="16" y2="8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="5.5" y1="6" x2="9" y2="10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><line x1="26.5" y1="6" x2="23" y2="10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>DAYBREAK · CO-FOUNDER</h5>
+          <div class="sig-line">
+            <span>Name of signatory</span
+            ><input type="text" placeholder="Full name" />
+          </div>
+          <div class="sig-line">
+            <span>Email (for notices)</span
+            ><input type="text" placeholder="name@daybreaktechinnovations.com" />
+          </div>
+          <div class="sig-line">
+            <span>Signature — draw below</span>
+            <div class="sig-pad-wrap">
+              <canvas class="sig-pad"></canvas>
+              <span class="sig-pad-hint">Draw with mouse or touch</span>
+            </div>
+            <button type="button" class="sig-clear">Clear</button>
+          </div>
+          <div class="sig-line"><span>Date</span><input type="date" /></div>
+        </div>
+      </div>
+
+      <p class="fineprint" style="margin-top: 30px">
+        DB-KLIYA-MVP-AGR-110926 · This Agreement incorporates Daybreak
+        Revised Proposal DB-KLIYA-MVP-REV2-110926 by reference.
+      </p>
+    </main>
+
+    <script src="signature-pad.js"></script>
+    <script>
+      document
+        .getElementById("agrPrint")
+        .addEventListener("click", () => window.print());
+    </script>
+  </body>
+</html>

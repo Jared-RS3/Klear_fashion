@@ -246,7 +246,7 @@ const proposalData = {
   clientName:  "Nolubabalo Nqakala",
   projectName: "Kliya",
   proposalDate:"27 August 2026",
-  proposalValidityDays: 14,
+  proposalValidityDays: 4,
   hourlyRate:  700,          // post-launch support rate
   currency:    "ZAR",
   companyName: "Daybreak",

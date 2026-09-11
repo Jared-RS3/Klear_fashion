@@ -15,6 +15,7 @@
   --dark:#070809;
   --dark-soft:#111315;
   --white:#f8f3ec;
+  --sun:#a07548;      /* Daybreak logo mark — sampled from brand reference */
 
   --page-w:900px;
   --pad:clamp(30px,6vw,74px);
@@ -77,6 +78,11 @@ body{
 .brand-mark:after{content:"";position:absolute;width:7px;height:1.4px;background:currentColor;right:-1px;top:1.5px;transform:rotate(-48deg)}
 .brand-mark.dark{border-color:var(--ink)}
 .brand-mark.dark:after{background:var(--ink)}
+
+/* Daybreak sunrise mark — icon colour is always the brand sun tone,
+   independent of surrounding text colour (white on dark, ink on light). */
+.brand-sun{width:22px;height:18px;flex:0 0 auto;color:var(--sun)}
+.contact-brand .brand-sun{width:30px;height:24px}
 
 .tb-center{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
 .tb-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
@@ -178,6 +184,9 @@ body{
 .prepared{display:flex;gap:44px;margin-top:36px}
 .prepared span{display:block;font-size:9px;letter-spacing:.2em;color:var(--muted);margin-bottom:7px}
 .prepared b{font-size:12px;font-weight:500;letter-spacing:.06em}
+.cover-stats{display:flex;gap:32px;margin-top:26px;padding-top:22px;border-top:1px solid rgba(0,0,0,.13);flex-wrap:wrap}
+.cover-stats span{display:block;font-size:9px;letter-spacing:.18em;color:var(--muted);margin-bottom:7px}
+.cover-stats b{font-size:14px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink)}
 
 /* ---- rock + phone stage ---- */
 .cover-stage{position:relative;height:100%;min-height:520px;display:flex;align-items:center;justify-content:center}
@@ -471,14 +480,14 @@ body{
    Below 820px the base .cost-row rule already collapses this to one column. */
 @media(min-width:821px){.cost-list.breakdown .cost-row{grid-template-columns:1.6fr .4fr}}
 .cost-num{font-style:normal;color:var(--warm-deep);font-variant-numeric:tabular-nums;font-weight:400;margin-right:10px}
-.cost-val .cv-h{min-width:78px;font-size:11.5px;color:var(--muted)}
+.cost-val .cv-h{min-width:78px;font-size:11.5px;color:var(--paper)}
 .cost-val b{font-weight:600;color:var(--warm-deep);font-variant-numeric:tabular-nums}
 /* the sub-total and consolidation lines are workings, not quoted items */
 .cost-row.sub .cost-name,.cost-row.sub .cost-val{color:var(--muted);font-weight:400}
 .cost-row.sub .cost-val b{color:var(--muted);font-weight:500}
 .cost-row.total{border-bottom:0;border-top:1px solid rgba(0,0,0,.34);padding-top:15px}
 .cost-row.total .cost-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
-.cost-row.total .cost-val .cv-h{color:var(--ink)}
+.cost-row.total .cost-val .cv-h{color:var(--paper)}
 .cost-row.total .cost-val b{font-size:16px}
 /* the two lines carrying genuinely new proprietary Kliya product logic */
 .cost-row.feature .cost-name{color:var(--warm-deep)}
@@ -556,6 +565,32 @@ body{
 .sig-line i{display:block;border-bottom:1px solid rgba(0,0,0,.4)}
 .sig-line:last-child{margin-bottom:2px}
 
+/* Fillable text field styled to match the .sig-line hairline exactly, so a
+   typed field looks identical to the printable blank it replaces. */
+.sig-line input[type="text"],.sig-line input[type="date"]{
+  display:block;width:100%;border:0;border-bottom:1px solid rgba(0,0,0,.4);
+  background:transparent;padding:0 0 3px;font:inherit;font-size:13px;
+  color:var(--ink);font-family:var(--sans)
+}
+.sig-line input[type="text"]:focus,.sig-line input[type="date"]:focus{outline:0;border-bottom-color:var(--warm-deep)}
+.price-card.solid .sig-line input{color:var(--white);border-bottom-color:rgba(255,255,255,.4)}
+
+/* Draw-to-sign pad — canvas the signer draws on with mouse/touch/pen. */
+.sig-pad-wrap{position:relative;margin-bottom:4px}
+.sig-pad{display:block;width:100%;height:74px;border-bottom:1px solid rgba(0,0,0,.4);background:rgba(0,0,0,.02);cursor:crosshair;touch-action:none}
+.sig-pad-hint{position:absolute;left:0;bottom:8px;font-size:10px;color:var(--muted);pointer-events:none;letter-spacing:.04em}
+.sig-pad-hint.hidden{display:none}
+.sig-clear{margin-top:6px;background:none;border:0;padding:0;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-deep);cursor:pointer;font-family:inherit}
+.sig-clear:hover{color:var(--ink)}
+.price-card.solid .sig-clear{color:var(--warm)}
+.price-card.solid .sig-clear:hover{color:var(--white)}
+.price-card.solid .sig-pad{background:rgba(255,255,255,.06);border-bottom-color:rgba(255,255,255,.4)}
+@media print{
+  .sig-clear{display:none!important}
+  .sig-pad-hint{display:none!important}
+  .sig-line input[type="text"],.sig-line input[type="date"]{border-bottom-color:rgba(0,0,0,.6)}
+}
+
 /* ============================================================
    CALLOUT
    ============================================================ */
@@ -563,6 +598,8 @@ body{
 .page-dark .callout{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
 .co-mark{font-size:16px;color:var(--warm);line-height:1.5;flex:0 0 auto}
 .callout p{margin:0;font-size:12.5px;line-height:1.65;max-width:70ch}
+.prose a,.callout a,.steps a,.numlist a{color:var(--warm-deep);text-decoration:underline;text-underline-offset:2px}
+.page-dark .prose a,.page-dark .callout a{color:var(--warm)}
 
 /* ============================================================
    CLOSING (page 10)
@@ -661,33 +698,38 @@ body{
   .topbar,.sidenav,.progress{display:none!important}
   .pages{padding:0;display:block}
 
-  /* One section per sheet, SIZED TO ITS CONTENT. We deliberately do not force a
-     full 297mm height — that stretched every page to a whole sheet and pushed
-     slightly-taller sections onto a near-blank second page. Page margins live on
-     @page, so every physical sheet (including where a long section spills onto a
-     second one) keeps the same top/bottom margin. */
+  /* @page below sets the printer margin to zero, so each sheet is a full
+     210×297mm A4 page with no white printer border — the section's own
+     background reaches every edge. Every section fills that full 297mm
+     sheet (min-height only pads short sections up to a full page; a
+     section whose content genuinely runs longer than one sheet still
+     spills onto a second). Padding here is the page's own safe margin for
+     text, not a printer margin. */
   .proposal-page{
-    display:block;width:auto;min-height:0;height:auto;margin:0;padding:8mm 12mm;
+    display:flex;flex-direction:column;width:auto;min-height:297mm;height:auto;
+    margin:0;padding:16mm 18mm;
     box-shadow:none;border-radius:0;overflow:visible;
     break-after:page;page-break-after:always;
     -webkit-print-color-adjust:exact;print-color-adjust:exact
   }
   .proposal-page:last-child{break-after:auto;page-break-after:auto}
-  .page-inner{padding:7mm 0 0;flex:none}
-  .page-foot{margin-top:8mm}
+  /* page-inner keeps whatever display it already has (block, or grid on
+     vision-grid-style pages) — only its own top margin goes auto. Paired
+     with page-foot's auto top margin, that splits the leftover page height
+     into two equal gaps, so short content centres between the header and
+     the footer instead of sitting flush under the header. */
+  .page-inner{padding:7mm 0 0;flex:0 0 auto;margin-top:auto}
+  .page-foot{margin-top:auto;padding-top:16px}
   .cover-glow,.dark-glow,.split-glow{display:none!important}
 
-  /* Cover fills the whole sheet (short content otherwise sits in the top half),
-     with the grid vertically centred. Flex is safe here — the cover is always
-     a single page. */
-  .proposal-page.cover{display:flex;flex-direction:column;min-height:262mm}
+  /* Cover fills the whole sheet, grid vertically centred within it. */
   .cover .cover-grid{flex:1 1 auto;align-items:center}
   /* keep the phone on the right; drop the decorative stone backdrop + shadow */
   .editorial-rock,.phone-shadow{display:none!important}
   .cover-stage{min-height:0;height:auto}
   .device-cover{height:auto!important;width:min(210px,100%)!important;transform:none!important;filter:none!important;margin:0 auto}
 
-  /* Vision: keep the girl image on the right, small. */
+  /* Vision: keep the model image on the right, small. */
   .vision-side{padding-top:0!important}
   .arched-image{max-width:150px!important}
 
@@ -704,8 +746,8 @@ body{
   .sign-grid,.sign-grid.three{grid-template-columns:1fr 1fr 1fr!important;gap:18px}
 
   /* closing page: stack the two panels rather than forcing a full-height row */
-  .page-split{display:block;min-height:0}
-  .split-dark,.split-light{padding:22px 4px}
+  .page-split{display:block;min-height:297mm}
+  .split-dark,.split-light{padding:28px 18mm;min-height:148.5mm;display:flex;flex-direction:column;justify-content:center}
 
   /* Keep self-contained blocks from being cut across a page boundary. These are
      the units that must never split — a phase, a term, a cost row, a signature
@@ -729,4 +771,4 @@ body{
 
   .page-inner>*,.cover-inner>*,.split-dark>*,.split-light>*{opacity:1!important;transform:none!important}
 }
-@page{size:A4;margin:10mm}
+@page{size:A4;margin:0}
