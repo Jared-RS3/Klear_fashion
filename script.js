@@ -29,7 +29,7 @@ const proposalData = {
   email: "contact@daybreaktechinnovations.com",
   website: "daybreaktech.agency",
   location: "Cape Town, South Africa",
-  deliveryWindow: "8–10 weeks of active delivery",
+  deliveryWindow: "10–13 weeks of active delivery",
 };
 
 /* ---- 2. Derived display values ---- */
